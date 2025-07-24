@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}What Is Routing - Protocols?{% endblock %}
+
+{% block content %}
+
+
+<div style="background: #f4f6e6; padding: 1.5rem; border-left: 6px solid #888;">
+  <h3 style="font-family: Georgia, serif;  font-size: 30px;">How do computers obtain routes?</h3>
+  <p style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 16px;">
+    > When looking at the table, you can see a <strong>letter</strong> at the start of each line, like <strong>D</strong> or <strong>R</strong>. These letters tell you how the computer learned about that route.:
+  </p>
+  <pre style="margin-left: 2rem; font-family: monospace; background: #fefff8; padding: 0.5rem; border: 1px solid #575757;"><strong>D</strong>   10.1.3.0/24 [90/30720] via 10.1.1.4, 00:00:05, GigabitEthernet0/2</pre>
+
+  <div style="font-family: 'Segoe UI', sans-serif;">
+    <p> ->   What does this letter tell us?:</p>
+    <ul>
+      <li><em>L</em> is the ONE IP of your <strong>router</strong> in your subnet. <em>C</em> is connected, the <strong>range</strong> of the entire subnet, meaning it just knows it automatically. </li>
+      <li><em>S means static</em>, this means someone painstakingly <em>manually</em> told the router how to get from A to B, <strong>every step along the way</strong></li>
+    </ul>
+    <u1>
+      <li>D, O, R are all protocols.
+      </li>
+      <li><strong>D is for EIGRP</strong>, routers every 5 seconds send "hello packets", these hold info about all routes other routers hold </li> 
+      <li> ↳ So, <em>previously unknown routers</em> tell every other router in the neighbourhood how to get to it's destination, <strong>now everyone knows</strong>.
+      </li>
+      <li><strong>O is for OSPF</strong>, they also send hello packets, but require area IDs for your router to accept that information (which just means be close)
+      </li>
+      <li><strong>R is for RIPv2</strong>, an older protocol, but also sends hello packets but to <em>everyone</em> every 30 seconds.</li>
+
+    </ul>
+    <p>
+
+    </p>
+    <nav>
+        <a href="/what-is-a-routing-tie" style="margin-left: 1rem; font-size: 18px;">-> What is a Routing Tie?</a>
+    </nav>
+  </div>
+</div>
+
+<div style="background: rgb(245, 241, 254); padding: 1.5rem; border-left: 6px solid #d4d4d4; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif;">Sample Routing Table</h3>
+  <p style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 18px;">
+    Here is the <em>output the computer uses</em> to <strong>know where to send</strong> your data. Let's break it down:
+  </p>
+  <pre style="font-family: monospace; background: rgb(251, 250, 255); padding: 1rem; border: 1px solid #707070; overflow-x: auto;">
+D     10.1.3.0/24 [90/30720] via 10.1.1.4, 00:00:05, GigabitEthernet0/2
+R     192.168.10.0/24 [120/1] via 10.1.2.1, 00:00:10, GigabitEthernet0/1
+C     10.1.1.0/24 is directly connected, GigabitEthernet0/2
+S     172.16.0.0/16 [1/0] via 10.1.1.2
+L     172.31.1.4/32 is directly connected, GigabitEthernet0/3
+  </pre>
+</div>
+
+{% endblock %}

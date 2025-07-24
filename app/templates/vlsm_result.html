@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}VLSM Results{% endblock %}
+
+{% block content %}
+<h2>Subnet Results</h2>
+
+{% if target_ip %}
+<p>Target IP: <strong>{{ target_ip }}</strong></p>
+{% endif %}
+
+<table border="1" cellpadding="6">
+    <tr>
+        <th>#</th>
+        <th>Network</th>
+        <th>CIDR</th>
+        <th>Range</th>
+        <th>Broadcast</th>
+        <th>Usable Hosts</th>
+        <th>Match?</th>
+    </tr>
+    {% for block in assignments %}
+    <tr {% if block == matched_block %} style="background:#c2f0c2"{% endif %}>
+        <td>{{ loop.index }}</td>
+        <td>{{ block.network_id }}</td>
+        <td>/{{ block.cidr }}</td>
+        <td>{{ block.first_usable }} - {{ block.last_usable }}</td>
+        <td>{{ block.broadcast }}</td>
+        <td>{{ block.usable_hosts }}</td>
+        <td>{% if block == matched_block %}✅{% endif %}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><a href="/vlsm">← Go Back</a>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}What Is Routing? - Times & Interfaces {% endblock %}
+
+{% block content %}
+
+
+<div style="background: #f6e6f2; padding: 1.5rem; border-left: 6px solid #888;">
+  <h3 style="font-family: Georgia, serif;  font-size: 30px;">What is the rest of it saying?</h3>
+  <p> You can see two more things in the table, the <strong>time</strong> and the <strong>interface</strong>. These are important for understanding how the computer uses the route:</p> 
+  </p>
+  <pre style="margin-left: 2rem; font-family: monospace; background: #fff8fe; padding: 0.5rem; border: 1px solid #575757;">
+    O   10.1.3.0/24 [110/10], via 10.1.2.5 <strong>00:00:05, GigabitEthernet0/4</strong>
+</pre>
+
+  <div style="font-family: 'Segoe UI', sans-serif;">
+    <p style="font-size: 17px;"> -> What is Time & Interface?:</p>
+    <ul>
+      <li style="font-size: 17px;"><em>Time is simply</em> how long ago <strong>the route was learned</strong>.</li>
+    </ul>
+    <u1>
+      <li> ↳ If you remember, protocols like <strong>EIGRP, OSPF and RIPv2</strong> send out info (hello packets) every so often. When this timer is bigger than that the route is bad.</li>
+      </li>
+    </u1>
+    </p>
+
+    <p>
+    <u1>
+      <li style="margin-left: 1.5rem;"><strong>The interface is just</strong> the actual cable it is going through.</li>
+
+    </ul>
+    <p>
+            
+    </p>
+    <nav>
+        <a href="/what-is-a-route" style="margin-left: 1rem; font-size: 18px;">-> Back to start. </a>
+    </nav>
+  </div>
+</div>
+
+<div style="background: rgb(245, 241, 254); padding: 1.5rem; border-left: 6px solid #d4d4d4; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif;">Sample Routing Table</h3>
+  <p style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 18px;">
+    Here is the <em>output the computer uses</em> to <strong>know where to send</strong> your data. Let's break it down:
+  </p>
+  <pre style="font-family: monospace; background: rgb(251, 250, 255); padding: 1rem; border: 1px solid #707070; overflow-x: auto;">
+D     10.1.3.0/24 [90/30720] via 10.1.1.4, 00:00:05, GigabitEthernet0/2
+R     192.168.10.0/24 [120/1] via 10.1.2.1, 00:00:10, GigabitEthernet0/1
+C     10.1.1.0/24 is directly connected, GigabitEthernet0/2
+S     172.16.0.0/16 [1/0] via 10.1.1.2
+L     172.31.1.4/32 is directly connected, GigabitEthernet0/3
+  </pre>
+</div>
+
+{% endblock %}

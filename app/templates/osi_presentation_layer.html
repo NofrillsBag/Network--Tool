@@ -1,0 +1,48 @@
+<h2>Presentation Layer</h2>
+<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
+  <!-- Left side: Encapsulation -->
+  <div style="flex: 3; padding: 1rem;">
+    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
+    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
+      <li>This layer’s job is to make sure the data is in a <strong>format</strong> that <em>both sides can understand.</em></li>
+      <li>If the application wants to send a photo, the Presentation layer makes sure it's in a readable format like <strong>JPEG or PNG</strong>.</li>
+      <li>It can also <strong>compress data</strong> (make it smaller) and <strong>encrypt it</strong> (lock it for privacy).</li>
+      <li>Example: You're sending a document online, <em>this layer might compress it to a ZIP file</em> and it may also handle <em>encryption</em> so only the right person can read it.</li>
+      <li>Once everything is in the right format, it passes the data down to the Session Layer.</li>
+    </ul>
+  </div>
+
+  <!-- Right side: Devices -->
+  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
+    <h3 style="font-family: Georgia, serif;">Examples</h3>
+    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
+      <li><em>Co</em>mpressors and <em>Dec</em>ompressors (Codec) (MP3, JPEG)</li>
+      <li>ZIP / RAR compressors</li>
+      <li>SSL/TLS encryption tools</li>
+      <li>File format converters</li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
+    <nav>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+    </nav>
+    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
+    <nav>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+    </nav>
+</div>

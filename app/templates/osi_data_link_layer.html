@@ -1,0 +1,55 @@
+<h2>Data Link Layer (MAC Address Layer)</h2>
+<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
+  <!-- Left side: Encapsulation -->
+  <div style="flex: 3; padding: 1rem;">
+    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
+    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
+      <li>This layer adds the <strong>MAC address</strong> a name tag used only inside the local network (LAN).</li>
+      <li>MAC addresses are <strong>physical, unique hardware IDs</strong> built into each devices network card AKA NIC (like <code>AA:BB:CC:DD:EE:FF</code>).</li>
+      <br>
+      <li>The Data Link Layer mixes with your packer (from layer 3) and puts it inside a <strong>frame</strong> and gives it:
+        <ul>
+          <li><strong>Source MAC:</strong> Your device’s MAC address</li>
+          <li><strong>Destination MAC:</strong> The Destinations MAC (If its not in the LAN, it sends it to the router)</li>
+        </ul>
+      </li>
+      <br>
+      <li>This layer is in charge of <u>local delivery</u>, it only cares about getting the data from one device to the destination (like to a router or destination device on the LAN).</li>
+      <li>If the destination is outside your network, the MAC address is set to the <strong>router’s MAC</strong> so it can forward it further.</li>
+    </ul>
+  </div>
+
+  <!-- Right side: Examples -->
+  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
+    <h3 style="font-family: Georgia, serif;">Examples</h3>
+    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
+      <li><strong>Source MAC:</strong> 00:1A:2B:3C:4D:5E</li>
+      <li><strong>Destination MAC:</strong> 00:1F:22:33:44:55 (router)</li>
+      <li><strong>Encapsulation:</strong> IP packet → Frame (with MAC header)</li>
+      <li><strong>Devices:</strong> Switches, Network Interface Cards (NICs)</li>
+    </ul>
+  </div>
+</div>
+<br>
+<br>
+<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
+    <nav>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+    </nav>
+    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
+    <nav>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+    </nav>
+</div>

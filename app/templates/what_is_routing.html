@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}What Is Routing? - Routes {% endblock %}
+
+{% block content %}
+
+
+<div style="background: #e6f6e9; padding: 1.5rem; border-left: 6px solid #888;">
+  <h3 style="font-family: Georgia, serif;  font-size: 30px;">What is a route?</h3>
+  <p style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 16px;">
+    > Let us try to understand the <strong>computer's language</strong>, in the simplest terms, routes get our data from <strong>A to B</strong> <em>across the internet</em>. Let us look at the <em>full table below, then back,</em> specifically the IPs:
+  </p>
+  <pre style="margin-left: 2rem; font-family: monospace; background: #f8fffa; padding: 0.5rem; border: 1px solid #575757;">D     <strong>10.1.3.0/24</strong> [90/30720] <strong>via 10.1.1.4</strong>, 00:00:05, GigabitEthernet0/2</pre>
+
+  <div style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif;">
+    <p> ->   This tells us the following:</p>
+    <ul>
+      <li><strong>10.1.3.0/24</strong> is the <em>destination network (subnet)</em> — the range of IPs we want to send data to. <em>Like to Marketing subnet from IT subnet</em></li>
+      <li><strong>10.1.1.4</strong> is the <em>next hop</em> from your router to another <strong>router</strong> (or device like a firewall, switch, or hub) that knows how to get closer to the destination, cycle repeats. </li>
+      <li><em>Think of it as a breadcrumb for your data to follow.</em> Each router "passes it on" to the next router that knows how to get closer to it's destination.</li>
+    </ul>
+
+    <p>
+        Ignore the bracketed numbers, the timer, and the interface at the end. Those will be explained in later pages.
+    </p>
+    <p>
+        Now that we have a basic understanding of what a route is how does the device obtain it? Let us focus on that "D"
+    </p>
+    <nav>
+        <a href="/what-is-a-routing-protocol" style="margin-left: 1rem; font-size: 18px;">-> How do computers obtain the information to know routes?</a>
+    </nav>
+  </div>
+</div>
+
+<div style="background: rgb(245, 241, 254); padding: 1.5rem; border-left: 6px solid #d4d4d4; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif;">Sample Routing Table</h3>
+  <p style="margin-left: 1.5rem; font-family: 'Segoe UI', sans-serif; font-size: 18px;">
+    Here is the <em>output the computer uses</em> to <strong>know where to send</strong> your data. Let's break it down:
+  </p>
+  <pre style="font-family: monospace; background: rgb(251, 250, 255); padding: 1rem; border: 1px solid #707070; overflow-x: auto;">
+D     10.1.3.0/24 [90/30720] via 10.1.1.4, 00:00:05, GigabitEthernet0/2
+R     192.168.10.0/24 [120/1] via 10.1.2.1, 00:00:10, GigabitEthernet0/1
+C     10.1.1.0/24 is directly connected, GigabitEthernet0/2
+S     172.16.0.0/16 [1/0] via 10.1.1.2
+  </pre>
+</div>
+
+{% endblock %}

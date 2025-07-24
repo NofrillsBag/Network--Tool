@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}VLSM Input{% endblock %}
+
+{% block content %}
+<h2>Subnet Calculator Learning Page | [VLSM]?</h2>
+<p>You can enter one <em>host requirement (no comma)</em> if you only desire one subnet.</p>
+
+<form method="POST" action="/vlsm">
+    <label>Base Network (e.g. 192.168.1.0/24):</label><br>
+    <input type="text" name="base_network" placeholder="e.g. 128.96.81.0/24" required><br><br>
+
+    <label>Host Requirements (comma-separated):</label><br>
+    <input type="text" name="host_counts" placeholder="e.g. 12,43,24,5" required><br><br>
+
+    <label>Target IP (find which subnet an IP is in):</label><br>
+    <input type="text" name="target_ip" placeholder="e.g. 128.96.81.32"><br><br>
+
+    <input type="submit" value="Calculate">
+</form>
+
+<hr>
+<div style="background: rgb(247, 255, 251); padding: 1rem; border-left: 6px solid rgb(215, 255, 238);">
+
+  <!-- Section 1 -->
+  <button class="collapsible">📘 What is a Subnet?</button>
+  <div class="content description-text">
+    <ul>
+      <li>A <strong>subnet</strong> is short for a sub-section network — a network is a collection of devices you own the IPs of, ("Base Network").</li>
+      <li>Subnets allow communication <em>without needing access to the internet</em>.</li>
+      <li>Networks typically give out <em>really large ranges of given IPs</em>.</li>
+      <li>You do not <strong>need OR want</strong> every device in that range to talk to each other <em>directly</em>.</li>
+      <li>This means <em>you don't want every IP you own on the same subnet</em>.</li>
+    </ul>
+    <ul>
+      <li>Subnets are used to create <em>smaller ranges of IPs that can communicate directly</em> with each other, but not with the rest of the large network.</li>
+      <li>This improves <strong>security</strong>, <strong>performance</strong>, and <strong>organization</strong>.</li>
+      <li>Security: subnets limit unnecessary communication, reducing <strong>vulnerabilities</strong>.</li>
+      <li>Performance: subnets let networks <strong>specialize</strong> in tasks (<em>e.g. printers, servers</em>).</li>
+      <li>However, all subnets normally must be the size of the largest one — <strong>(i.e. 256 devices needed for IT department)</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- Section 2 -->
+  <button class="collapsible">📐 Let's solve this with Variable Length Subnet Masking [VLSM]</button>
+  <div class="content description-text">
+    <ul>
+      <li>In large enterprises, you may have <em>separate divisions</em> needing different subnet sizes.</li>
+      <li>Each <em>division may not need exactly 256 devices</em>, but <strong>the biggest one does</strong>.</li>
+      <li>This forces all other divisions to also get 256 slots <strong>(this is the issue with normal subnetting)</strong>.</li>
+      <li>They also shouldn't communicate directly with other divisions for security and performance.</li>
+      <li>This wastes IPs — a scarce resource in large networks.</li>
+    </ul>
+    <ul>
+      <li><strong>VLSM</strong> lets you create subnets of size 2<sup>n</sup> tailored to each division's needs.</li>
+      <li>Example: 12 devices → subnet of 16, 43 devices → subnet of 64, etc.</li>
+      <li><em>2 IPs are always reserved</em>: the "network_id" (first IP) and "broadcast" (last IP).</li>
+      <li><em>Try inputting example host requirements and a base network to calculate your VLSM plan.</em></li>
+    </ul>
+  </div>
+
+  <!-- Section 3 -->
+  <button class="collapsible">📊 How does VLSM work?</button>
+  <div class="content description-text">
+    <ul>
+      <li>If you use the calculator, you can see a <em>CIDR notation</em> (e.g. /24 in the first box).</li>
+      <li>Earlier you saw <em>how you can use 2<sup>n</sup></em> to create <strong>subnets of the squares of 2</strong> (e.g. 16, 32, 64).</li>
+      <li>Subnet masks and IPs are actually 32 bits, 1s and 0s <strong>(11111110.00000000.00000000.00000000/7 → 254.0.0.0/7)</strong>.</li>
+      <li>The 2<sup>n</sup> you see are the bits you can freely choose, while /24 is the number of <strong>bits you can't change</strong>.</li>
+    </ul>
+    <ul>
+      <li>Both will add up to 32. So <em>/24 means you have 8 bits left</em>, and 2<sup>8</sup> = <strong>256 IPs</strong>.</li>
+      <li>VLSM allows you to do 2<sup>n</sup> subnets: 16, 32, 64, etc. for each department.</li>
+      <li><em>Example: You need 12 → take 16 → that's /28. Another 12 → another /28. Need 42? Take 64 → /26.</em></li>
+      <li><em>You don't have unlimited IPs</em>. The base network <strong>(e.g. 192.168.1.0/24)</strong> gives you 256 IPs to use VLSM on.</li>
+    </ul>
+  </div>
+</div>
+
+
+
+{% endblock %}

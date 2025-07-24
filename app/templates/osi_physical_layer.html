@@ -1,0 +1,61 @@
+<h2>Physical Layer</h2>
+<div style="background: #fcfcff; padding: 1.5rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif; text-align: center;">Layer 1 | Physical</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+    
+    <!-- Sending Side (Encapsulation) -->
+    <div style="flex: 1 1 45%; background: #eef; padding: 1rem; border-left: 6px solid #99f;">
+      <h4 style="font-family: Georgia, serif;"> Sending (Encapsulation)</h4>
+      <p>
+        This is the <strong>final step</strong> before your data leaves your computer. All the headers and data from previous layers are turned into <strong>physical signals</strong>:
+      </p>
+      <ul>
+        <li>Turns 1s and 0s into <strong>electricity</strong>, <strong>light pulses</strong>, or <strong>radio waves</strong>.</li>
+        <li>Sends data over cables (Ethernet, fiber) or wirelessly (Wi-Fi).</li>
+        <li>Does not care what the data means — it just moves it out.</li>
+      </ul>
+      <p><em>Think of it like blinking Morse code out of a flashlight — it's just raw transmission.</em></p>
+    </div>
+
+    <!-- Receiving Side (Decapsulation) -->
+    <div style="flex: 1 1 45%; background: #efe; padding: 1rem; border-left: 6px solid #9f9;">
+      <h4 style="font-family: Georgia, serif;">Receiving (Decapsulation)</h4>
+      <p>
+        This is the <strong>first layer</strong> your device uses to begin decoding incoming data. It:
+      </p>
+      <ul>
+        <li>Receives <strong>physical signals</strong> through a cable or antenna.</li>
+        <li>Converts them back into <strong>1s and 0s</strong> (binary bits).</li>
+        <li>Passes the bits up to the <strong>MAC layer (Layer 2) without interpreting them.</li>
+      </ul>
+      <p><em>Think of this like a light sensor decoding Morse code flashes into actual letters, but not reading the sentence yet.</em></p>
+    </div>
+  </div>
+
+  <div style="margin-top: 1.25rem; font-size: 0.95rem; color: #212b23;">
+     This marks the transition point — your computer <strong>finishes encapsulation</strong> by transmitting raw data and <strong>starts decapsulation</strong> by receiving those same kinds of signals from someone else. It's the <strong>bottom and top of the OSI cyclev.
+  </div>
+</div>
+<br>
+<br>
+<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
+    <nav>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+    </nav>
+    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
+    <nav>
+        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
+        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
+        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
+        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
+        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
+        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
+        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
+    </nav>
+</div>

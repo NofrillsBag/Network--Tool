@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Cable Lookup{% endblock %}
+
+{% block content %}
+<h2>Cable Categorization Tool</h2>
+
+<p>You can either:</p>
+<ul>
+  <li><strong>Enter a known Ethernet standard</strong> (e.g. <code>1000Base-T</code>)</li>
+  <li>or <strong>enter speed and medium</strong> (e.g. <code>1 Gbps</code> and <code>fiber</code>)</li>
+  <li>or <strong>enter a range</strong> (e.g. <code>10</code>,) option for fibre/copper filtering</li>
+</ul>
+
+<form method="POST" action="/cables">
+  <fieldset style="border:1px solid #f5e6d3; padding:1rem; margin-bottom:1rem;">
+    <legend>Lookup by Standard</legend>
+    <label for="standard">Ethernet Standard:</label><br>
+    <input type="text" name="standard" placeholder="e.g. 10GBase-T" style="width: 250px;"><br>
+  </fieldset>
+
+  <fieldset style="border:1px solid #f5e6d3; padding:1rem;">
+    <legend>Lookup by Speed and Medium</legend>
+    <label for="speed">Speed:</label><br>
+    <input type="text" name="speed" placeholder="e.g. 1 Gbps"><br><br>
+
+    <label for="medium">Medium:</label><br>
+    <input type="text" name="medium" placeholder="e.g. copper or fiber"><br>
+  </fieldset>
+
+  <fieldset style="border:1px solid #f5e6d3; padding:1rem;">
+    <legend>Lookup by range</legend>
+    <label for="range">Ethernet Cable Range:</label><br>
+    <input type="text" name="range" placeholder="e.g. '10'"><br><br>
+  
+    <label for="range_medium">Medium:</label><br>
+    <input type="text" name="range_medium" placeholder="e.g. copper or fiber"><br>
+
+  </fieldset>
+  <br><input type="submit" value="Lookup">
+</form>
+
+<hr>
+
+{% if error %}
+  <p style="color: red;"><strong>Error:</strong> {{ error }}</p>
+{% elif result %}
+  {% if multiple %}
+    <h3>Matching Standards:</h3>
+    <ul>
+      {% for r in result %}
+        <li>
+          <strong>{{ r.Standard }}</strong> — {{ r.Speed }}, {{ r.Medium }}<br>
+          Cable: {{ r["Required Cable"] }}<br>
+          Range: {{ r.Range }}<br>
+          <em>{{ r.Description }}</em>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h3>Result:</h3>
+    <ul>
+      <li><strong>Standard:</strong> {{ result.Standard }}</li>
+      <li><strong>Speed:</strong> {{ result.Speed }}</li>
+      <li><strong>Medium:</strong> {{ result.Medium }}</li>
+      <li><strong>Required Cable:</strong> {{ result["Required Cable"] }}</li>
+      <li><strong>Range:</strong> {{ result.Range }}</li>
+      <li><strong>Description:</strong> {{ result.Description }}</li>
+    </ul>
+  {% endif %}
+{% endif %}
+
+<hr>
+<div style="background: rgb(252, 251, 247); padding: 1rem; border-left: 6px solid rgb(255, 238, 214);">
+  <h4 style="font-family: Georgia, serif;">🔥 What <u>EVEN</u> Is a Cable Category 🔥?</h4>
+  <div class="description-text" style="margin-left: 2rem;">
+    <p>
+      Ethernet cables are classified into <strong>categories</strong> (Cat 5e, Cat 6, Cat 6A, Cat 8, etc.) to define their performance capabilities.
+      Each category specifies how well a cable can carry signals in terms of speed (bandwidth), distance, and noise resistance (shielding).
+    </p>
+    <p>
+      You can't use "any cable you want" because not all cables are designed to handle high-speed signals over long distances. 
+      For example, a <strong>Cat 5e cable</strong> may support a maximum throughput (actual data transfer) of 1 Gbps, but it can't at all handle 10 Gbps. 
+      Using a lower-category cable than required will usually result in connection instability or complete failure.
+    </p>
+
+    <p><strong>Why it matters:</strong></p>
+    <ul style="margin-left: 1rem;">
+      <li><strong>Speed compatibility:</strong> Higher categories support higher speeds (e.g., Cat 6A for 10 Gbps)</li>
+      <li><strong>Distance support:</strong> Higher categories can maintain signal integrity over longer runs</li>
+      <li><strong>Reduced interference:</strong> Shielding and twist rates improve resistance to crosstalk</li>
+    </ul>
+
+    <p><strong>Quick examples:</strong></p>
+    <ul style="margin-left: 1rem;">
+      <li><strong>Cat 5e:</strong> Good for 1 Gbps up to 100 meters</li>
+      <li><strong>Cat 6:</strong> Supports 10 Gbps up to 55 meters</li>
+      <li><strong>Cat 6A:</strong> Certified for 10 Gbps up to 100 meters</li>
+      <li><strong>Cat 8:</strong> Used in data centers for 25 to 40 Gbps, up to 30 meters</li>
+    </ul>
+  </div>
+</div>
+
+
+{% endblock %}

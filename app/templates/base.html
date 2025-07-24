@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}VLSM App{% endblock %}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
+    <!-- Embedded CSS styles -->
+    <style>
+        /* Description block paragraph font */
+        .description-text {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            margin-left: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Header styles for explanation sections */
+        h4 {
+            font-family: Georgia, serif;
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            color: #223;
+        }
+
+        /* Dropdown styles */
+        .collapsible {
+            background-color: #eef;
+            color: #333;
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #d0d8f0;
+        }
+
+        .content {
+            padding: 0 1rem;
+            display: none;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            border-left: 4px solid #ccd;
+        }
+    </style>
+</head>
+<body style="font-family: sans-serif; margin: 2rem;">
+    <header>
+        <nav>
+        <h1 style="font-family: sans-serif; margin-left: 32rem; font-size: 30px;"><a href="/">Network Calculator/Learning Tool</a></h1>
+        </nav>
+        <nav>
+            <a href="/vlsm">All About Subnetting</a> |
+            <a href="/cables">Cable Lookup</a> |
+            <a href="/what-is-a-route">What is a "routing"?</a> |
+            <a href="/osi-model">How does networking work? [OSI Model]</a>
+        </nav>
+        <hr>
+    </header>
+
+    {% block content %}
+    <!-- This will be filled by child templates like vlsm_form.html -->
+    {% endblock %}
+
+    <!--  Collapsible dropdown script -->
+    <script>
+        const coll = document.getElementsByClassName("collapsible");
+        for (let i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
