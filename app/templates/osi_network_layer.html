@@ -1,55 +1,68 @@
 <h2>Network Layer</h2>
-<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
-  <!-- Left side: Encapsulation -->
-  <div style="flex: 3; padding: 1rem;">
-    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
-    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
-      <li>The network layer adds the <strong>IP address</strong> information to your data — this is like putting a "To" and "From" address on a package.</li>
-      <li>This address is used to figure out the best <strong>route</strong> through the internet to reach the destination.</li>
-      <br>
-      <li>The data gets a new label called the <strong>IP header</strong>, which includes:
-        <ul>
-          <li><strong>Source IP:</strong> Where the packet is coming from</li>
-          <li><strong>Destination IP:</strong> Where it's supposed to go</li>
-        </ul>
-      <br>
-      </li>
-      <li>The network layer works with routers — devices that decide the best path for each data packet based on these IP addresses.</li>
-      <li>These contain TTL (time to live), when trying to get to a destination, there may just not be a path. This tells it to give up after jumping around X times.</li>
-    </ul>
-  </div>
+<div style="background: #fcfcff; padding: 1.5rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif; text-align: center;">Layer 3 | Network Layer (IP Address Layer)</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+    
+    <!-- Sending Side (Encapsulation) -->
+    <div style="flex: 1; background: #eef; padding: 1.5rem; border-left: 6px solid #99f;">
+      <h4 style="font-family: Georgia, serif;">Sending (Encapsulation)</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        This layer adds an IP header that lets routers deliver data across different networks it’s responsible for <strong>end-to-end delivery</strong>.
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Encapsulates the Transport Layer segment inside an <strong>IP packet</strong>.</li>
+        <li>Adds two IP addresses:
+          <ul>
+            <li><strong>Source IP:</strong> Your device’s IP address</li>
+            <li><strong>Destination IP:</strong> The final device’s IP address</li>
+          </ul>
+        </li>
+        <li>Routers use this info to <strong>route</strong> your packet across the world</li>
+        <li>These have something called a TTL (Time to Live), when packets try to find their destination, a path may not exist, TTL tells it after X, give up.</li>
+      </ul>
+    </div>
 
-  <!-- Right side: Examples -->
-  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
-    <h3 style="font-family: Georgia, serif;">Examples</h3>
-    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
-      <li><strong>IPv4:</strong> 192.168.1.1</li>
-      <li><strong>IPv6:</strong> 2001:0db8::1</li>
-      <li><strong>Header Includes:</strong><br> Source IP, Destination IP, TTL (Time to Live)</li>
-      <li><strong>Devices:</strong> Routers</li>
-    </ul>
+    <!-- Receiving Side (Decapsulation) -->
+    <div style="flex: 1; padding: 1.5rem; background-color: #f0fff0; border-left: 6px solid #56ac70;">
+      <h4 style="font-family: Georgia, serif;">Receiving (Decapsulation)</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        Now the receiving device reads the IP packet to see if it’s the final destination.
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Checks the <strong>destination IP address</strong> in the header.</li>
+        <li>If it matches, it removes the IP header (destination & source).</li>
+        <li>Passes the current information (TCP or UDP) up to Layer 4.</li>
+        <li>If not, and it's a router, it forwards the packet to the next hop.</li>
+      </ul>
+    </div>
   </div>
 </div>
+
 <br>
 <br>
-<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
-    <nav>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-    </nav>
-    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
-    <nav>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-    </nav>
-</div>
+<h3 style=" margin-left: .5rem;">↳ Encapsulation (sending data) flow</h3>
+<nav>
+  <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+  <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+  <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+  <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+  <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+  <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+  <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+</nav>
+
+<h3 style=" margin-left: .5rem;">↳ De-encapsulation (receiving data) flow</h3>
+<nav>
+  <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+  <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+  <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+  <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+  <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+  <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+  <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+</nav>
+<br>
+<hr>
+<nav>
+  <a href="/osi-model" style="margin-left: 1rem; font-size: 18px;">Back To OSI Model</a>
+</nav>

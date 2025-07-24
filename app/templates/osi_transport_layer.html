@@ -1,56 +1,72 @@
 <h2>Transport Layer</h2>
-<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
-  <!-- Left side: Encapsulation -->
-  <div style="flex: 3; padding: 1rem;">
-    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
-    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
-      <li>The transport layers job is to break data into <strong>chunks</strong> and keep track of those pieces during delivery.</li>
-      <li>Each seperate piece is given something called a <strong>transport header</strong> this holds info like what order the pieces go in and how to reassemble them.</li>
-      <li>You can <u>think of headers as writing labels on each box</u> in a delivery truck.</li>
-      <br>
-      <li style = "font-size: 18px;">This layer also decides <u>which way it wants to piece up the data</u>, this is the <strong>protocol</strong> to use:
-        <ul>
-          <br>
-          <li><strong>TCP (Transmission Control Protocol):</strong> Reliable and safe. Checks if the data arrived, resends if it didn’t. Slower, but guaranteed.</li>
-          <li><strong>UDP (User Datagram Protocol):</strong> Fast and lightweight. Doesn’t check if the data made it — good for live voice or video.</li>
-        </ul>
-      </li>
-      <br>
-      <br>
-      <li>So if youre <em>gaming or on a video call</em>, <strong>UDP</strong> might be used it keeps going no matter what. If you’re sending an email or downloading a file, TCP ensures nothing is lost.</li>
-    </ul>
-  </div>
+<div style="background: #fcfcff; padding: 1.5rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif; text-align: center;">Layer 4 | Transport Layer</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+    
+    <!-- Sending Side (Encapsulation) -->
+    <div style="flex: 1; background: #eef; padding: 1.5rem; border-left: 6px solid #99f;">
+      <h4 style="font-family: Georgia, serif;">Sending (Encapsulation)</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        This layer breaks the message into smaller <strong>segments</strong> and adds info (akin to mailing info) to help the destination put it all back together. It also manages <strong>reliability</strong> and uses <strong>ports</strong> to direct data to the correct application (like a browser or video game).
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Adds a <strong>TCP</strong> or <strong>UDP</strong> header, depending on which type of connection is needed:
+          <ul>
+            <li><strong>TCP (Transmission Control Protocol):</strong> Slower but makes sure the packet is correct, or is resent</li>
+            <li><strong>UDP (User Datagram Protocol):</strong> Fast but does not check if the packet is correct, never resent.</li>
+          </ul>
+        </li>
+        <li>Adds <strong>port numbers</strong>:
+          <ul>
+            <li><strong>Source port:</strong> The app on your device sending the data</li>
+            <li><strong>Destination port:</strong> The app/service you’re talking to (like port 80 for websites, 443 for secure web, or 53 for DNS)</li>
+          </ul>
+        </li>
+        <li>Passes the segment to Layer 3 (Network Layer) for delivery across networks.</li>
+      </ul>
+    </div>
 
-  <!-- Right side: Examples -->
-  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
-    <h3 style="font-family: Georgia, serif;">Examples</h3>
-    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
-      <li><strong>TCP:</strong> Emails, File Downloads, Web Pages</li>
-      <li><strong>UDP:</strong> Online Games, VoIP, Livestreams</li>
-      <li>Headers: Sequence Numbers, Port Numbers (where to enter from)</li>
-    </ul>
+    <!-- Receiving Side (Decapsulation) -->
+    <div style="flex: 1; padding: 1.5rem; background-color: #f0fff0; border-left: 8px solid #56ac70;">
+      <h4 style="font-family: Georgia, serif;">Receiving (Decapsulation)</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        The receiving device uses this layer to figure out <strong>which application</strong> should get the data and whether it arrived correctly.
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Checks the <strong>destination port</strong> to figure out which application to send the data to (e.g. browser, game, etc.).</li>
+        <li>Removes the TCP or UDP header.</li>
+        </li>
+        <li>Passes the reassembled message (TCP reassembles, UDP is simply hoping it's ordered) up to Layer 5 (Session Layer).</li>
+      </ul>
+    </div>
   </div>
 </div>
+
 <br>
 <br>
-<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
-    <nav>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-    </nav>
-    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
-    <nav>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-    </nav>
-</div>
+<h3 style=" margin-left: .5rem;">↳ Encapsulation (sending data) flow</h3>
+<nav>
+  <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+  <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+  <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+  <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+  <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+  <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+  <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+</nav>
+
+<h3 style=" margin-left: .5rem;">↳ De-encapsulation (receiving data) flow</h3>
+<nav>
+  <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+  <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+  <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+  <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+  <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+  <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+  <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+</nav>
+<br>
+<hr>
+<nav>
+  <a href="/osi-model" style="margin-left: 1rem; font-size: 18px;">Back To OSI Model</a>
+</nav>

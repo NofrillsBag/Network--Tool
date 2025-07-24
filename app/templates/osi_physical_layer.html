@@ -12,9 +12,11 @@
       <ul>
         <li>Turns 1s and 0s into <strong>electricity</strong>, <strong>light pulses</strong>, or <strong>radio waves</strong>.</li>
         <li>Sends data over cables (Ethernet, fiber) or wirelessly (Wi-Fi).</li>
-        <li>Does not care what the data means — it just moves it out.</li>
+        <li>Does not care what the data means it just moves it out.</li>
       </ul>
-      <p><em>Think of it like blinking Morse code out of a flashlight — it's just raw transmission.</em></p>
+      <br>
+      <p><em>Routing</em> now takes care of <strong>getting the 1's and 0's to its destination</strong>, as it <em>has left your computer now.</em></p>
+      <p>And now encapsulation ends, then the person who you sent it to recieving starts to recieve it, <strong>(decapsulation)</strong></p>
     </div>
 
     <!-- Receiving Side (Decapsulation) -->
@@ -24,17 +26,15 @@
         This is the <strong>first layer</strong> your device uses to begin decoding incoming data. It:
       </p>
       <ul>
-        <li>Receives <strong>physical signals</strong> through a cable or antenna.</li>
+        <li>Your device receives <strong>physical signals</strong> through a cable or Wi-Fi signal.</li>
         <li>Converts them back into <strong>1s and 0s</strong> (binary bits).</li>
-        <li>Passes the bits up to the <strong>MAC layer (Layer 2) without interpreting them.</li>
+        <li>Passes the bits up to the <strong>MAC layer (Layer 2) without interpreting them.</strong></li>
       </ul>
-      <p><em>Think of this like a light sensor decoding Morse code flashes into actual letters, but not reading the sentence yet.</em></p>
+      <br>
+      <p>This marks the transition point your computer <strong>finishes encapsulation</strong> by transmitting raw data and <strong>starts decapsulation</strong> by receiving those same kinds of signals from someone else. It's the <strong>bottom and top of the OSI cycle.</strong></p>
     </div>
   </div>
-
-  <div style="margin-top: 1.25rem; font-size: 0.95rem; color: #212b23;">
-     This marks the transition point — your computer <strong>finishes encapsulation</strong> by transmitting raw data and <strong>starts decapsulation</strong> by receiving those same kinds of signals from someone else. It's the <strong>bottom and top of the OSI cyclev.
-  </div>
+    
 </div>
 <br>
 <br>
@@ -59,3 +59,8 @@
         <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
     </nav>
 </div>
+<br>
+<hr>
+<nav>
+  <a href="/osi-model" style="margin-left: 1rem; font-size: 18px;">Back To OSI Model</a>
+</nav>

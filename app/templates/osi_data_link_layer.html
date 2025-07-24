@@ -1,34 +1,43 @@
-<h2>Data Link Layer (MAC Address Layer)</h2>
-<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
-  <!-- Left side: Encapsulation -->
-  <div style="flex: 3; padding: 1rem;">
-    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
-    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
-      <li>This layer adds the <strong>MAC address</strong> a name tag used only inside the local network (LAN).</li>
-      <li>MAC addresses are <strong>physical, unique hardware IDs</strong> built into each devices network card AKA NIC (like <code>AA:BB:CC:DD:EE:FF</code>).</li>
-      <br>
-      <li>The Data Link Layer mixes with your packer (from layer 3) and puts it inside a <strong>frame</strong> and gives it:
+<h2>Data-Link Layer</h2>
+<div style="background: #fcfcff; padding: 1.5rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif; text-align: center;">Layer 2 | Data-Link Layer</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+    
+    <!-- Sending Side (Encapsulation) -->
+    <div style="flex: 1; background: #eef; padding: 1rem; border-left: 6px solid #99f;">
+      <h4 style="font-family: Georgia, serif;"> Sending (Encapsulation)</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+      This layer adds a new header containing MAC addresses, used for <strong>local delivery</strong> inside a LAN.
+    </p>
+    <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+      <li>Encapsulates the Layer 3 IP packet inside a <strong>frame</strong>.</li>
+      <li>Adds two MAC addresses:
         <ul>
-          <li><strong>Source MAC:</strong> Your device’s MAC address</li>
-          <li><strong>Destination MAC:</strong> The Destinations MAC (If its not in the LAN, it sends it to the router)</li>
+          <li><strong>Source MAC:</strong> Your computer’s network card (NIC)</li>
+          <li><strong>Destination MAC:</strong> Destination NIC (or the router, if outside network)</li>
         </ul>
       </li>
-      <br>
-      <li>This layer is in charge of <u>local delivery</u>, it only cares about getting the data from one device to the destination (like to a router or destination device on the LAN).</li>
-      <li>If the destination is outside your network, the MAC address is set to the <strong>router’s MAC</strong> so it can forward it further.</li>
+      <li>Only cares about <strong>getting data to the next hop</strong> on the local network (like a router, switch, or destination device).</li>
+      <li>If outside the LAN, it forwards the frame to the <strong>router’s MAC address</strong>.</li>
     </ul>
   </div>
 
-  <!-- Right side: Examples -->
-  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
-    <h3 style="font-family: Georgia, serif;">Examples</h3>
-    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
-      <li><strong>Source MAC:</strong> 00:1A:2B:3C:4D:5E</li>
-      <li><strong>Destination MAC:</strong> 00:1F:22:33:44:55 (router)</li>
-      <li><strong>Encapsulation:</strong> IP packet → Frame (with MAC header)</li>
-      <li><strong>Devices:</strong> Switches, Network Interface Cards (NICs)</li>
+
+    <!-- Receiving Side (Decapsulation) -->
+    <div style="flex: 1; padding: 1.5rem; background-color: #f0fff0; border-left: 8px solid #56ac70;">
+    <h3 style="font-family: Georgia, serif; font-weight: bold;">Receiving (Decapsulation)</h3>
+    <p style="font-family: Arial, sans-serif; font-size: 15px;">
+      The receiving device uses this layer to verify whether the data was meant for it.
+    </p>
+    <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+      <li>Checks the <strong>destination MAC address</strong> in the frame header.</li>
+      <li>If the MAC matches, it accepts and removes the frame header.</li>
+      <li>Passes the rest (the IP packet) up to Layer 3 (Network Layer).</li>
+      <li>If not, the frame is discarded.</li>
     </ul>
   </div>
+</div>
+    
 </div>
 <br>
 <br>
@@ -53,3 +62,8 @@
         <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
     </nav>
 </div>
+<br>
+<hr>
+<nav>
+  <a href="/osi-model" style="margin-left: 1rem; font-size: 18px;">Back To OSI Model</a>
+</nav>

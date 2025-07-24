@@ -1,51 +1,69 @@
 <h2>Application Layer</h2>
-<div style="display: flex; border: 2px solid black; margin-bottom: 2rem;">
-  <!-- Left side: Encapsulation -->
-  <div style="flex: 3; padding: 1rem;">
-    <h3 style="font-family: Georgia, serif; color: #223;">Encapsulation</h3>
-    <ul style="margin-left: 1.5rem; font-family: Arial, sans-serif; font-size: 15px;">
-      <li>This is the layer where <strong>apps like YouTube, Zoom, or a video game</strong> start the process of sending data.</li>
-      <li>It's not the app itself, it's an <em>in between part</em> of the app and the network.</li>
-      <li>It figures out <strong>what standards (
-    syntax) to use when talking to the network</strong>, using rules like <strong>HTTP (your browser), or VoIP (telecommunication)</strong>.</li>
-      <li>Example: If you’re on a phone call using VoIP, this layer says “I want to send voice data” and picks a format suited for <strong>telecommunication</strong>.</li>
-      <li>It then passes that request down to the next layer <strong>The Presentation Layer</strong> so it can continue to be packaged and sent.</li>
-    </ul>
-  </div>
+<div style="background: #fcfcff; padding: 1.5rem; border: 2px solid #ccc; border-radius: 8px; margin-bottom: 2rem;">
+  <h3 style="font-family: Georgia, serif; text-align: center;">Layer 7 | Application Layer</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+    
+    <!-- Sending Side (Encapsulation) -->
+    <div style="flex: 1; background: #eef; padding: 1rem; border-left: 6px solid #99f;">
+      <h4 style="font-family: Georgia, serif;">Sending (Encapsulation) [Step One]</h4>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        This is the <strong>topmost layer</strong> where you, the user, interact with an app like YouTube, Gmail, or a game.
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Not the app itself but the protocols behind it (like HTTP for websites, SMTP for mail, or FTP for file sharing).</li>
+        <li>Prepares what kind of data needs to be sent: a file, message, or request.</li>
+        <li>Uses <strong>protocols</strong> to request what format and service is needed:
+          <ul>
+            <li><strong>HTTP</strong> to view a webpage</li>
+            <li><strong>VoIP</strong> to send audio/video data</li>
+            <li><strong>DNS</strong> to look up domain names</li>
+          </ul>
+        </li>
+        <li>Sends the data to Layer 6 for formatting, encryption, or compression.</li>
+      </ul>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;"><em>Example:</em> Clicking a link on a website triggers an HTTP request at this layer.</p>
+    </div>
 
-  <!-- Right side: Devices -->
-  <div style="flex: 1; border-left: 2px solid black; padding: 1rem; background-color: #f8f8f8;">
-    <h3 style="font-family: Georgia, serif;">Devices</h3>
-    <ul style="font-family: Arial, sans-serif; font-size: 14px;">
-      <li>Web Browsers</li>
-      <li>Email Clients</li>
-      <li>Cloud Apps (Google Drive, Zoom)</li>
-      <li>File Transfer Tools</li>
-    </ul>
+    <!-- Receiving Side (Decapsulation) -->
+    <div style="flex: 1; padding: 1.5rem; background-color: #f0fff0; border-left: 8px solid #56ac70;">
+      <h3 style="font-family: Georgia, serif; font-weight: bold;">Receiving (Decapsulation)</h3>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;">
+        The final layer where the user sees or interacts with the result.
+      </p>
+      <ul style="font-family: Arial, sans-serif; font-size: 15px;">
+        <li>Receives the <strong>cleaned, structured, and translated data</strong> from Layer 6.</li>
+        <li>Delivers it to the app like showing the webpage or loading the image.</li>
+        <li>Lets the app decide what to do next: open it, show it, or respond to it.</li>
+        <li>Completes the full circle of communication, from the sender’s click to the receiver’s screen.</li>
+      </ul>
+      <p style="font-family: Arial, sans-serif; font-size: 15px;"><em>Example:</em> You receive a video stream in YouTube, or your Gmail inbox refreshes with new messages.</p>
+    </div>
   </div>
 </div>
-</div>
-<div>
+
 <br>
+<h3 style="margin-left: .5rem;">↳ Encapsulation (sending data) flow</h3>
+<nav>
+    <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+    <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+    <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+    <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+    <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+    <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+    <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+</nav>
+<h3 style="margin-left: .5rem;">↳ De-encapsulation (receiving data) flow</h3>
+<nav>
+    <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;">Physical Layer</a>
+    <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;">Data Link Layer</a>
+    <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;">Network Layer</a>
+    <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;">Transport Layer</a>
+    <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;">Session Layer</a>
+    <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;">Presentation Layer</a>
+    <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;">Application Layer</a>
+</nav>
 <br>
-<h3 style=" margin-left: .5rem;"></p> ↳ Encapsulation (sending data) flow</h3>
-    <nav>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-    </nav>
-    <h3 style=" margin-left: .5rem;"> ↳ De-encapsulation (receiving data) flow</h3>
-    <nav>
-        <a href="/osi-physical-layer" style="margin-left: 1rem; font-size: 18px;"> Physical Layer</a>
-        <a href="/osi-data-link-layer" style="margin-left: 1rem; font-size: 18px;"> Data Link Layer</a>
-        <a href="/osi-network-layer" style="margin-left: 1rem; font-size: 18px;"> Network Layer</a>
-        <a href="/osi-transport-layer" style="margin-left: 1rem; font-size: 18px;"> Transport Layer</a>
-        <a href="/osi-session-layer" style="margin-left: 1rem; font-size: 18px;"> Session Layer</a>
-        <a href="/osi-presentation-layer" style="margin-left: 1rem; font-size: 18px;"> Presentation Layer</a>
-        <a href="/osi-application-layer" style="margin-left: 1rem; font-size: 18px;"> Application Layer</a>
-    </nav>
-</div>
+<hr>
+<nav>
+  <a href="/osi-model" style="margin-left: 1rem; font-size: 18px;">Back To OSI Model</a>
+</nav>
