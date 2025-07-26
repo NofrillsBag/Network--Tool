@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+{% block title %}Cable Lookup{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ports Overview</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fb;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .main-box {
+      background: #ffffff;
+      padding: 2rem;
+      width: 80%;
+      border: 2px solid #ccc;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 3rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      width: 80%;
+    }
+
+    details {
+      background: #ffffff;
+      border: 2px solid #aaa;
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+
+    details[open] {
+      background: #f0f8ff;
+      border-color: #66b;
+    }
+
+    summary {
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-box">
+    <h2>Understanding Ports</h2>
+    <p>
+      Ports are like the door numbers, if you think of the IP as the Building Address, it lets you as a sender tell the receiver which door to open for your message, meaning what service you want to talk to. Also needed for the receiver to know which door to open to let the message in. Then you as the sender can get a reply on your own port.
+      <br><br>
+      - <strong>Source ports</strong> are temporary and random, chosen by the sender.<br>
+      - <strong>Destination ports</strong> are standard, and represent the service (like HTTP or FTP).<br>
+      - Ports <strong>0–1023</strong> are well-known. Ports above 49152 are dynamic/private.
+      <br>
+      <br>
+      - Ports are <strong>tied to the protocols mentioned in OSI Layer 4</strong>, <em>TCP and UDP</em>; remember, TCP is reliable and ordered, while UDP is faster but less reliable.
+    </p>
+     <!-- Port Ranges -->
+  <br>
+  <hr>
+  <br>
+  <h4 style="font-family: 'Georgia', serif; margin-top: 1.5rem;">Port Number Ranges</h4>
+  <table style="width: 100%; border-collapse: collapse; font-family: 'Arial', sans-serif; font-size: 15px; margin-top: 0.5rem;">
+    <thead>
+      <tr style="background-color: #f0f0f0;">
+        <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid #ccc;">Range</th>
+        <th style="text-align: left; padding: 0.5rem; border-bottom: 1px solid #ccc;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.5rem;">0–1023</td>
+        <td style="padding: 0.5rem;">Well-known ports; <strong>core services everyone needs</strong> like <em>HTTP, DNS, FTP</em></td>
+      </tr>
+      <tr style="background-color: #fafafa;">
+        <td style="padding: 0.5rem;">1024–49151</td>
+        <td style="padding: 0.5rem;">Registered ports; <strong>vendor reserved or application specific</strong> like <em>SQL, RDP</em></td>
+      </tr>
+      <tr>
+        <td style="padding: 0.5rem;">49152–65535</td>
+        <td style="padding: 0.5rem;">Usually the <strong>source port for the user to get its reply.</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="grid-container">
+    <details>
+      <summary>HTTP / HTTPS (80 / 443)</summary>
+      <p>
+        <em>Used to let you access websites</em>, "https://youtube.com". <strong>Youtube uses port 443 instead of 80</strong>, <br> <br> <u>TCP/443 is for secure HTTPS connections</u>, that S means it used something called encryption with something known as TLS.
+      </p>
+    </details>
+    <details>
+      <summary>FTP (20 / 21) SFTP (22)</summary>
+      <p>
+        This stands for <em>File Transfer Protocol</em>, this is used to <u>transfer files between computers</u>, this is GUI based just like how you would use a <strong>file explorer on your computer</strong>.<br> <br> The <strong>20</strong> port is used for the actual data transfer, while <strong>21</strong> is used to manage and regulate the connection. <br><br> When you want this to be secure, you use SFTP (<em>which is Secure Shell File Transfer Protocol which is why it shares a port with SSH</em>), exactly the same but uses <strong>port 22</strong> and encrypts the data.
+      </p>
+    </details>
+    <details>
+      <summary>SSH / Telnet (22 / 23)</summary>
+      <p>
+        <strong>"Secure Shell", port 22</strong>, this is a way to connect safely (encryption) to another device, and have <strong>the full control</strong>, but over a what is known as a <em>command line interface (CLI)</em>, you can do <u>everything you usually do on a computer, but its just you typing in commands.</u><br><br> <em>Telnet was the same</em>, using port <strong>23</strong>, but it was not secure, so it was what is known as <strong>deprecated</strong>, meaning <em>it is no longer used and replaced by the better SSH.</em>
+      </p>
+    </details>
+    <details>
+      <summary>SMTP (25)</summary>
+      <p>
+        This is a <em>non secure way of sending mail between different mail servers</em>. This has <strong>no encryption at all</strong>, here the <u>highest port number of the three should be used</u>,<br><br> as those are newer and more secure; TCP/465 (runner up) or TCP/587 (best) respectively. <br><br> Other mail protocols like POP3 and IMAP are used to retrieve and organize mail respectively, but SMTP is only for sending.
+      </p>
+    </details>
+    <details>
+      <summary>DNS (53)</summary>
+      <p>
+        Domain Name System. This is what you use to convert between IP adresses and website names like <em>youtube.com</em>. <br><br> Normal DNS does not use encryption, so it uses <strong>port 53</strong> for UDP <br><br> newer version exist, called DoH and DoT, which uses <strong>port 853</strong> for DoT and <strong>443</strong> for DoH (same as HTTPS).
+      </p>
+    </details>
+    <details>
+      <summary>RDP (3389)</summary>
+      <p>
+        A GUI version of SSH. Simple as that.
+      </p>
+    </details>
+    <details>
+      <summary>Syslog (514)</summary>
+      <p>
+        <strong>Syslog</strong> is a <em>port used to gather events (like error flags, or login failure)</em> from multiple devices. <br><br>
+        This (<strong>514 port</strong>) is NOT just for Syslog. It is also used alongside 
+        <strong> Security Information and Event Management (SIEM)</strong>, 
+        which <u>collects and organizes logs</u> into one place so they can be <em>monitored and analysed.</em>.
+      </p>
+    </details>
+    <details>
+      <summary>SQL (1433 / 3306)</summary>
+      <p>
+        SQL is a standard way to get data from a big database, like a website's user data. <br><br>
+        Microsoft has its own SQL at port <strong>1433</strong>, but the most common one is MySQL, which uses port <strong>3306</strong>. <br><br>
+      </p>
+    </details>
+    <details>
+      <summary>LDAP (389 / 636)</summary>
+      <p>
+        LDAP is normally used to store user information in a hierarchy that is likely similar to the company structure. The reason you dont use SQL is you can add genuine context to the users, like location, department, etc. <br><br>
+        The <strong>389 port</strong> is used for the normal LDAP, while the <strong>636 port</strong> is used for the secure version.
+      </p>
+    </details>
+    <details>
+      <summary>SNMP (161 / 162)</summary>
+      <p>
+        Simple Network Management Protocol (port 161). This is diffent from Syslog as its to <strong>gather metric data, like how much traffic is going through a device, or how many errors it has.</strong> <br><br>
+        The cool thing is that this is a <strong>very popular standard, SNMP uses Object IDs these act the same way file paths do</strong> <em>""C:\Users\Documents\file.txt"",</em> that path would point to a metric you'd want to measure, instead it looks like <u>11.2.4.0.0.1</u> <br><br>
+        You can use <strong>port 162 (trap) to instead make the device itself send data and make alerts based on what you want</strong>, like if the CPU usage is above 90% for 5 minutes, <u>send an alert by itself.</u>
+      </p>
+    </details>
+  </div>
+
+</body>
+</html>
+
+{% endblock %}

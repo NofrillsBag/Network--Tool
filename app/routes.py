@@ -85,6 +85,10 @@ def osi_presentation_layer():
 def osi_application_layer():
     return render_template("osi_application_layer.html")
 
+@app.route("/ports")
+def ports():
+    return render_template("ports.html")
+
 
 
 

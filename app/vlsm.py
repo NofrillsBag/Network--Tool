@@ -114,7 +114,7 @@ def find_ip_subnet(ip, vlsm_blocks):
 
 
         if first <= ip_int <= last:
-            print("  ✅ Match found!")
+            print(" Match found!")
             return block
 
     return "Not in any subnet"
@@ -137,6 +137,6 @@ for i, a in enumerate(assignments, 1):
 '''
 
 if not ip_in_base_network(target_ip, base_ip, base_cidr):
-    print("⚠️ IP is not in the base network range.")
+    print("! IP is not in the base network range.")
 else:
     matched_block = find_ip_subnet(target_ip, assignments)
